@@ -4,7 +4,7 @@ kicker: Annual family + friends gathering
 dates: Monday, June 29 – Tuesday, July 7
 timezone: All times Pacific
 year: 2026
-allweek: Puzzle, Cornhole, Beach
+allweek: Puzzle 🧩, Cornhole 🌽, Beach 🏖️
 
 # ---------------------------------------------------------------------------
 # HOW TO EDIT THIS FILE
