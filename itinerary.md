@@ -47,9 +47,9 @@ allweek: Puzzle, Cornhole, Beach
 - 9:00–11:00a | Bruegger's bagels, soccer game, and Debbie & Steve sendoff
 - 12:00–1:30p | Bike ride to Bayside | Little Piggies for lunch
 - 3:00–5:00p | Pickleball
-- 5:00p | Wageners family dinner | likely
+- 5:00p | Wageners-only family dinner
 - 8:30–10:00p | Board games | @ Marina
-- Late | Home rave or night out | feat. DJ Ctrl+F1
+- Late | Home rave or night out | feat. DJ cTrl+F1
 
 ### World Cup
 - 9:00a | England v DR Congo
@@ -88,13 +88,13 @@ allweek: Puzzle, Cornhole, Beach
 ### Schedule
 - 4:00a | Ed & Patrick set up tent
 - 10:00a–12:00p | Coronado 4th of July Parade
-- 1:00p | Hot dogs at Isabella
-- 6:00p | Dinner at the Marina
+- 1:00p | Hot dogs & Nathan's Famous | @ Isabella
+- 6:00p | Dinner | @ Marina
 - 9:00p | Fireworks
 
 ### World Cup
 - 10:00a | Canada v Netherlands?
-- ! 2:00p | Germany v France? | @ location TBD
+- ! 2:00p | Germany v France? | @ Isabella
 
 ## Sunday, July 5
 
