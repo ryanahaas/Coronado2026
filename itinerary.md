@@ -94,7 +94,7 @@ allweek: Puzzle 🧩, Cornhole 🌽, Beach 🏖️
 
 ### World Cup
 - 10:00a | Canada v Netherlands?
-- ! 2:00p | Germany v France? | @ Isabella
+- ! 2:00p | Paraguay v France? | @ Isabella
 
 ## Sunday, July 5
 
