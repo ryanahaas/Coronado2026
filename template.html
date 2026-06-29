@@ -73,12 +73,15 @@ section.day:first-of-type{border-top:none}
 .aw-items{font-size:15px;color:var(--ink)}
 @media (max-width:760px){
   .hero h1{font-size:52px}
+  section.day{border-top:2px solid #D3C4A2;padding-bottom:22px}
   .daygrid{display:block}
   .daygrid::before{display:none}
   .daygrid>*{grid-row:auto!important;grid-column:auto!important;margin-bottom:9px}
   .cell-r{display:none}
-  .match-strip{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
-  .match-strip .mpill{font-size:13px;padding:5px 10px}
+  .barbox{background:none;border:none;padding:0;margin-left:0}
+  .match-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:14px;border-top:2px dashed #D9CDB3}
+  .match-strip .mpill{background:transparent;border:1.6px solid #82A6C8;color:var(--pill-ink);
+    border-radius:17px 13px 18px 14px/14px 17px 13px 16px;padding:5px 13px;font-size:13px}
   .title{font-size:18px}
   .itime{font-size:15px}
   .btext{font-size:16px}
