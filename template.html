@@ -87,12 +87,13 @@ section.day:first-of-type{border-top:none}
 #bigtext:checked ~ main .empty{font-size:20px}
 #bigtext:checked ~ .allweek .aw-items{font-size:20px}
 #bigtext:checked ~ nav .chip{font-size:18px}
-.featrow{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start}
-.ftime{font-size:14px;font-weight:600;color:var(--blue-deep);white-space:nowrap}
+.featrow{position:relative;display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start}
+.ftime{position:relative;font-size:14px;font-weight:600;color:var(--blue-deep);white-space:nowrap}
 .barbox{position:relative;background:var(--pill-bg);border:1px solid var(--pill-line);border-radius:13px 10px 15px 9px;padding:6px 12px;margin-left:-13px}
 .bsq{position:absolute;inset:0;width:100%;height:100%;overflow:visible;display:none}
 .barbox .btext,.barbox .bnote{position:relative}
-#soccer:checked ~ main .barbox{background:transparent;border:none;padding:9px 16px;margin-left:-16px}
+#soccer:checked ~ main .featrow{padding:11px 14px;margin-left:-14px}
+#soccer:checked ~ main .barbox{background:transparent;border:none;padding:0;margin-left:0}
 #soccer:checked ~ main .bsq{display:block}
 .btext{font-size:15px;color:var(--blue-deep);line-height:1.35}
 .btext .loc{color:var(--blue)}
@@ -117,6 +118,7 @@ section.day:first-of-type{border-top:none}
   .toggles{margin:4px 0 14px}
   #soccer:checked ~ main .cell-r{display:flex}
   #soccer:checked ~ main .match-strip{display:none}
+  #soccer:checked ~ main .msq path,#soccer:checked ~ main .bsq path{stroke-width:2.6}
   .title{font-size:18px}
   .itime{font-size:15px}
   .btext{font-size:16px}
@@ -188,8 +190,8 @@ function bubbleCompact(m){
 }
 function featRow(m,gr){
   const note=(m.n||m.h)?('<div class="bnote">'+(m.n||"")+((m.n&&m.h)?" · ":"")+(m.h?('<a href="'+m.h+'" target="_blank" rel="noopener">register</a>'):"")+'</div>'):"";
-  const sq='<svg class="bsq" viewBox="0 0 230 60" preserveAspectRatio="none" aria-hidden="true"><path d="M9 9 L221 7 L223 53 L7 55 Z" fill="none" stroke="#34608f" stroke-width="4" stroke-linejoin="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh1)"/></svg>';
-  return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1"><div class="ftime">'+m.t+'</div><div class="barbox">'+sq+'<div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
+  const sq='<svg class="bsq" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M5 6 L595 5 L597 54 L3 55 Z" fill="none" stroke="#34608f" stroke-width="4" stroke-linejoin="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh1)"/></svg>';
+  return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1">'+sq+'<div class="ftime">'+m.t+'</div><div class="barbox"><div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
 }
 const _now=new Date();
 const today=_now.getFullYear()+'-'+String(_now.getMonth()+1).padStart(2,'0')+'-'+String(_now.getDate()).padStart(2,'0');
