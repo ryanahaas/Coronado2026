@@ -76,7 +76,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 9:00–11:00a | Pickleball 🏓
 - 9:30a | Ryan Gilly+Fam Visit @ Marina
 - 2:30–4:30p | Pool volleyball & jacuzzi 🤽🏼‍♂️ | @ Isabella
-- 5:30p | Dinner | @ Isabella
+- 5:30p | Lawn Games + Dinner | @ Isabella
 - 8:00p | Blood on the Clocktower 🎭 | Storyteller: Jason Haas
 
 ### World Cup
