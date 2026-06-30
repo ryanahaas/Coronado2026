@@ -89,7 +89,9 @@ section.day:first-of-type{border-top:none}
 #bigtext:checked ~ nav .chip{font-size:18px}
 .featrow{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start}
 .ftime{font-size:14px;font-weight:600;color:var(--blue-deep);white-space:nowrap}
-.barbox{background:var(--pill-bg);border:1px solid var(--pill-line);border-radius:13px 10px 15px 9px;padding:6px 12px;margin-left:-13px}
+.barbox{position:relative;background:transparent;border:none;padding:9px 16px;margin-left:-16px}
+.bsq{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.barbox .btext,.barbox .bnote{position:relative}
 .btext{font-size:15px;color:var(--blue-deep);line-height:1.35}
 .btext .loc{color:var(--blue)}
 .bnote{font-size:12px;color:var(--ink-soft);margin-top:3px}
@@ -108,6 +110,7 @@ section.day:first-of-type{border-top:none}
   .daygrid>*{grid-row:auto!important;grid-column:auto!important;margin-bottom:9px}
   .cell-r{display:none}
   .barbox{background:none;border:none;padding:0;margin-left:0}
+  .bsq{display:none}
   .match-strip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;padding-top:14px;border-top:2px dashed #D9CDB3}
   .match-strip .ball{font-size:16px;margin-right:1px}
   .toggles{margin:4px 0 14px}
@@ -184,7 +187,8 @@ function bubbleCompact(m){
 }
 function featRow(m,gr){
   const note=(m.n||m.h)?('<div class="bnote">'+(m.n||"")+((m.n&&m.h)?" · ":"")+(m.h?('<a href="'+m.h+'" target="_blank" rel="noopener">register</a>'):"")+'</div>'):"";
-  return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1"><div class="ftime">'+m.t+'</div><div class="barbox"><div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
+  const sq='<svg class="bsq" viewBox="0 0 230 60" preserveAspectRatio="none" aria-hidden="true"><path d="M9 9 L221 7 L223 53 L7 55 Z" fill="none" stroke="#34608f" stroke-width="4" stroke-linejoin="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh1)"/></svg>';
+  return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1"><div class="ftime">'+m.t+'</div><div class="barbox">'+sq+'<div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
 }
 const _now=new Date();
 const today=_now.getFullYear()+'-'+String(_now.getMonth()+1).padStart(2,'0')+'-'+String(_now.getDate()).padStart(2,'0');
