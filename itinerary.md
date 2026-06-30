@@ -94,7 +94,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 9:00p | Fireworks ⋆✴︎˚｡⋆
 
 ### World Cup
-- 10:00a | Canada v Netherlands?
+- 10:00a | Canada v Morocco
 - ! 2:00p | Paraguay v France? | @ Isabella
 
 ## Sunday, July 5
