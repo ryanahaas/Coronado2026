@@ -84,7 +84,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 3:00p | Argentina v Cape Verde
 - 6:30p | Colombia v Ghana
 
-## Saturday, July 4 | Independence Day · America's 250th
+## Saturday, July 4
 
 ### Schedule
 - 4:00a | Ed & Patrick set up tent
