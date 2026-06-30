@@ -106,6 +106,10 @@ section.day:first-of-type{border-top:none}
   padding:9px 16px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
 .aw-label{font-family:'Caveat',cursive;font-size:18px;color:var(--red-deep);font-weight:700}
 .aw-items{font-size:15px;color:var(--ink)}
+.daydeco{position:absolute;top:8px;right:6px;width:300px;max-width:47%;z-index:0;opacity:.5;pointer-events:none}
+.daydeco svg{width:100%;height:auto;display:block;overflow:visible}
+#jul4{position:relative;isolation:isolate}
+#jul4 .dayhead,#jul4 .daygrid,#jul4 .match-strip{position:relative;z-index:1}
 @media (max-width:760px){
   .hero h1{font-size:52px}
   section.day{border-top:2px solid #D3C4A2;padding-bottom:22px}
@@ -123,10 +127,16 @@ section.day:first-of-type{border-top:none}
   .title{font-size:18px}
   .itime{font-size:15px}
   .btext{font-size:16px}
+  .daydeco{width:200px;opacity:.4;top:4px;right:2px}
 }
 @keyframes ballfall{0%{transform:translateY(-12vh) rotate(0deg)}100%{transform:translateY(112vh) rotate(var(--spin,540deg))}}
 .ballrain{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
 .ballrain span{position:absolute;top:0;will-change:transform}
+@keyframes fwpulse{0%,100%{opacity:.62;transform:scale(.93)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes flagsway{0%,100%{transform:skewX(-2deg) rotate(-.6deg)}50%{transform:skewX(2.6deg) rotate(.5deg)}}
+.fw{animation:fwpulse 4.2s ease-in-out infinite}
+.flagcloth{animation:flagsway 5s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.fw,.flagcloth{animation:none}}
 </style>
 </head>
 <body>
@@ -194,6 +204,40 @@ function featRow(m,gr){
   const sq='<svg class="bsq" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M5 6 L595 5 L597 54 L3 55 Z" fill="none" stroke="#34608f" stroke-width="4" stroke-linejoin="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh1)"/></svg>';
   return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1">'+sq+'<div class="ftime">'+m.t+'</div><div class="barbox"><div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
 }
+function fwBurst(cx,cy,r,n,color,rot,delay){
+  let sp='';
+  for(let i=0;i<n;i++){
+    const a=(i/n)*6.2832+rot, L=r*(i%2?0.74:1);
+    const x1=(cx+Math.cos(a)*r*0.26).toFixed(1), y1=(cy+Math.sin(a)*r*0.26).toFixed(1);
+    const x2=(cx+Math.cos(a)*L).toFixed(1), y2=(cy+Math.sin(a)*L).toFixed(1);
+    sp+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'"/><circle cx="'+x2+'" cy="'+y2+'" r="'+(i%2?1.3:1.9)+'" stroke="none"/>';
+  }
+  return '<g class="fw" style="transform-box:fill-box;transform-origin:center;animation-delay:'+delay+'s" stroke="'+color+'" fill="'+color+'" stroke-width="2" stroke-linecap="round"><circle cx="'+cx+'" cy="'+cy+'" r="2.1" stroke="none"/>'+sp+'</g>';
+}
+function jul4Deco(){
+  const flag='<g class="flagwave">'
+    +'<line x1="44" y1="150" x2="44" y2="100" stroke="#8A7A60" stroke-width="2.4" stroke-linecap="round"/>'
+    +'<circle cx="44" cy="99" r="2.3" fill="#E9A53E"/>'
+    +'<g class="flagcloth" style="transform-box:fill-box;transform-origin:left center">'
+      +'<clipPath id="fcl"><path d="M45,102 C65,97 86,108 118,101 L118,128 C86,135 65,124 45,130 Z"/></clipPath>'
+      +'<g clip-path="url(#fcl)">'
+        +'<rect x="44" y="96" width="78" height="40" fill="#FBF6EC"/>'
+        +'<rect x="44" y="102" width="78" height="4.4" fill="#C2554E"/>'
+        +'<rect x="44" y="111" width="78" height="4.4" fill="#C2554E"/>'
+        +'<rect x="44" y="120" width="78" height="4.4" fill="#C2554E"/>'
+        +'<rect x="44" y="129" width="78" height="4.4" fill="#C2554E"/>'
+        +'<rect x="44" y="98" width="32" height="14" fill="#2E5E8C"/>'
+        +'<g fill="#FBF6EC"><circle cx="51" cy="102" r="1"/><circle cx="59" cy="102" r="1"/><circle cx="67" cy="102" r="1"/><circle cx="55" cy="107" r="1"/><circle cx="63" cy="107" r="1"/></g>'
+      +'</g>'
+      +'<path d="M45,102 C65,97 86,108 118,101 L118,128 C86,135 65,124 45,130 Z" fill="none" stroke="#CDBC9E" stroke-width="1.1"/>'
+    +'</g></g>';
+  return '<div class="daydeco" aria-hidden="true"><svg viewBox="0 0 300 170" fill="none">'
+    +fwBurst(210,50,35,12,'#E0A23A',0.05,0)
+    +fwBurst(146,78,25,10,'#C2554E',0.3,1.2)
+    +fwBurst(258,104,18,8,'#3F6FA0',0,2.1)
+    +flag
+  +'</svg></div>';
+}
 const _now=new Date();
 const today=_now.getFullYear()+'-'+String(_now.getMonth()+1).padStart(2,'0')+'-'+String(_now.getDate()).padStart(2,'0');
 const nav=document.getElementById('nav'), days=document.getElementById('days');
@@ -218,6 +262,7 @@ DATA.days.forEach(d=>{
   const stripHtml=stripMatches.length?'<div class="match-strip"><span class="ball" aria-hidden="true">⚽</span>'+stripMatches.map(bubbleCompact).join('')+'</div>':'';
   days.insertAdjacentHTML('beforeend',
     '<section class="day" id="'+d.id+'" data-iso="'+d.iso+'">'+
+      (d.id==='jul4'?jul4Deco():'')+
       '<div class="dayhead"><h2>'+d.dow+' · '+d.date+'</h2>'+
         (d.hl?'<span class="hl">'+d.hl+'</span>':'')+
         (isToday?'<span class="today">Today</span>':'')+
