@@ -32,7 +32,7 @@ a{color:var(--blue)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:22px;height:12px;border-radius:4px;border:1px solid var(--pill-line);background:var(--pill-bg);display:inline-block}
 .sw.bar{width:30px}
-.sun{position:absolute;top:18px;right:26px;z-index:1;opacity:.9}
+.sun{position:absolute;top:18px;left:26px;z-index:1;opacity:.9}
 .waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:34px;display:block;z-index:1}
 nav.nav{position:sticky;top:0;z-index:20;background:rgba(251,246,236,.94);backdrop-filter:blur(7px);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:10px 14px;-webkit-overflow-scrolling:touch}
@@ -62,17 +62,24 @@ section.day:first-of-type{border-top:none}
 .match-strip{display:none}
 #soccer{display:none}
 #bigtext{display:none}
-.toggles{display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;margin:8px 0 16px}
+#fabopen{display:none}
+.toggles{display:flex;flex-direction:column;gap:16px;align-items:flex-start;margin:0}
 .soccer-toggle,.big-toggle{display:flex;align-items:center;gap:4px;width:fit-content;margin:0;cursor:pointer}
 .il{display:inline-flex;align-items:center;gap:7px;font-size:19px;color:#2B2A28;font-family:Georgia,"Times New Roman",serif}
 .strack{position:relative;width:58px;height:30px;border-radius:999px;background:#E2DBC9;transition:background .2s;flex:0 0 auto}
 .sknob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid #DCD2BB;display:flex;align-items:center;justify-content:center;font-size:15px;transition:transform .2s}
-#soccer:checked ~ main .soccer-toggle .strack{background:#9AD0AB}
-#soccer:checked ~ main .soccer-toggle .sknob{transform:translateX(28px)}
-#bigtext:checked ~ main .big-toggle .strack{background:#8FBEE6}
-#bigtext:checked ~ main .big-toggle .sknob{transform:translateX(28px)}
-.wc-link{display:none;margin:0 auto 14px;width:fit-content;text-decoration:none;background:var(--pill-bg);border:1px solid var(--pill-line);color:var(--pill-ink);border-radius:16px 13px 17px 14px;padding:7px 16px;font-size:14px;font-weight:600}
-#soccer:checked ~ main .wc-link{display:block}
+#soccer:checked ~ .fab-panel .soccer-toggle .strack{background:#9AD0AB}
+#soccer:checked ~ .fab-panel .soccer-toggle .sknob{transform:translateX(28px)}
+#bigtext:checked ~ .fab-panel .big-toggle .strack{background:#8FBEE6}
+#bigtext:checked ~ .fab-panel .big-toggle .sknob{transform:translateX(28px)}
+.wc-link{display:none;margin:0;width:fit-content;text-decoration:none;background:var(--pill-bg);border:1px solid var(--pill-line);color:var(--pill-ink);border-radius:16px 13px 17px 14px;padding:7px 16px;font-size:14px;font-weight:600}
+#soccer:checked ~ .fab-panel .wc-link{display:block}
+.fab{position:fixed;top:64px;right:16px;z-index:42;display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:background .2s}
+#fabopen:checked ~ .fab{background:var(--pill-bg);border-color:var(--pill-line)}
+.fab-backdrop{display:none;position:fixed;inset:0;z-index:38;background:rgba(43,42,40,.12)}
+#fabopen:checked ~ .fab-backdrop{display:block}
+.fab-panel{display:none;flex-direction:column;gap:14px;position:fixed;right:16px;top:112px;z-index:41;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:0 8px 26px rgba(0,0,0,.16)}
+#fabopen:checked ~ .fab-panel{display:flex}
 #bigtext:checked ~ main .item,#bigtext:checked ~ main .featrow{grid-template-columns:140px 1fr}
 #bigtext:checked ~ main .dayhead h2{font-size:48px}
 #bigtext:checked ~ main .title{font-size:25px}
@@ -109,7 +116,6 @@ section.day:first-of-type{border-top:none}
   .match-strip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;padding-top:14px;border-top:2px dashed #D9CDB3}
   .match-strip .ball{font-size:16px;margin-right:1px}
   .match-strip .mpill{background:transparent;border:1px solid #A7C3DD;color:var(--pill-ink);padding:3px 9px;font-size:12px;border-radius:16px 13px 17px 14px}
-  .toggles{margin:4px 0 14px}
   #soccer:checked ~ main .cell-r{display:flex}
   #soccer:checked ~ main .match-strip{display:none}
   .title{font-size:18px}
@@ -124,6 +130,7 @@ section.day:first-of-type{border-top:none}
 <body>
 <input type="checkbox" id="soccer">
 <input type="checkbox" id="bigtext">
+<input type="checkbox" id="fabopen">
 <header class="hero">
   <svg class="sun" width="74" height="74" viewBox="0 0 74 74" aria-hidden="true">
     <circle cx="37" cy="37" r="15" fill="#F1B44C"/>
@@ -145,8 +152,11 @@ section.day:first-of-type{border-top:none}
 </header>
 
 <nav class="nav"><div class="nav-inner" id="nav"></div></nav>
-<main class="wrap" id="days"><div class="toggles"><label for="soccer" class="soccer-toggle"><span class="il">I<svg class="heart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2554E" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><span class="strack"><span class="sknob">⚽</span></span></label><label for="bigtext" class="big-toggle"><span class="il">I'm 🧓</span><span class="strack"><span class="sknob">🔍</span></span></label></div><a class="wc-link" href="https://harry-wagener.github.io/WC_tracker/" target="_blank" rel="noopener">🏆 World Cup Pool Standings ↗</a></main>
+<main class="wrap" id="days"></main>
 <div class="allweek"><span class="aw-label">Anytime all week</span><span class="aw-items">__ALLWEEK__</span></div>
+<label for="fabopen" class="fab-backdrop"></label>
+<label for="fabopen" class="fab" aria-label="Display options">⚽ 🔍</label>
+<div class="fab-panel"><div class="toggles"><label for="soccer" class="soccer-toggle"><span class="il">I<svg class="heart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2554E" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><span class="strack"><span class="sknob">⚽</span></span></label><label for="bigtext" class="big-toggle"><span class="il">I'm 🧓</span><span class="strack"><span class="sknob">🔍</span></span></label></div><a class="wc-link" href="https://harry-wagener.github.io/WC_tracker/" target="_blank" rel="noopener">🏆 World Cup Pool Standings ↗</a></div>
 
 <script>
 const DATA=__DATA__;
