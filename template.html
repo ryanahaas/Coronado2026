@@ -50,13 +50,14 @@ section.day:first-of-type{border-top:none}
 .daygrid{display:grid;grid-template-columns:1fr 300px;column-gap:22px;row-gap:9px;position:relative;align-items:start}
 .daygrid::before{content:"";position:absolute;top:2px;bottom:2px;right:311px;width:0;border-left:2px dashed #D9CDB3}
 .cell-l{display:flex;flex-direction:column;gap:9px}
-.cell-r{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.cell-r{display:flex;flex-direction:column;gap:13px;align-items:flex-start}
 .item{display:grid;grid-template-columns:88px 1fr;gap:12px}
 .itime{font-size:14px;font-weight:600;color:var(--ink-soft);white-space:nowrap}
 .title{font-size:16px;color:var(--ink)}
 .note{font-size:14px;color:var(--ink-soft)}
-.mpill{display:inline-flex;background:var(--pill-bg);border:1px solid var(--pill-line);border-radius:14px 10px 15px 9px;
-  padding:6px 12px;font-size:14px;color:var(--pill-ink);line-height:1.35}
+.msq{position:relative;display:inline-block;padding:11px 28px}
+.msq>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.msqt{position:relative;font-size:14px;color:var(--blue-deep);white-space:nowrap;line-height:1.2}
 .mt{font-weight:400;margin-right:7px;white-space:nowrap;color:var(--ink-soft)}
 .v{color:#7C9BBC;padding:0 3px;font-size:12px}
 .match-strip{display:none}
@@ -78,7 +79,7 @@ section.day:first-of-type{border-top:none}
 #bigtext:checked ~ main .title{font-size:25px}
 #bigtext:checked ~ main .itime{font-size:20px}
 #bigtext:checked ~ main .note{font-size:19px}
-#bigtext:checked ~ main .mpill{font-size:18px}
+#bigtext:checked ~ main .msqt{font-size:18px}
 #bigtext:checked ~ main .btext{font-size:23px}
 #bigtext:checked ~ main .ftime{font-size:20px}
 #bigtext:checked ~ main .empty{font-size:20px}
@@ -105,10 +106,10 @@ section.day:first-of-type{border-top:none}
   .daygrid>*{grid-row:auto!important;grid-column:auto!important;margin-bottom:9px}
   .cell-r{display:none}
   .barbox{background:none;border:none;padding:0;margin-left:0}
-  .mpill{border:1px solid #D6E2EE;border-radius:18px 16px 19px 15px;padding:5px 12px;font-size:13px}
-  .match-strip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;padding-top:14px;border-top:2px dashed #D9CDB3}
+  .match-strip{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:12px;padding-top:14px;border-top:2px dashed #D9CDB3}
   .match-strip .ball{font-size:16px;margin-right:1px}
-  .match-strip .mpill{background:transparent;border:1px solid #A7C3DD;color:var(--pill-ink);padding:3px 9px;font-size:12px;border-radius:16px 13px 17px 14px}
+  .match-strip .msq{padding:8px 20px}
+  .match-strip .msqt{font-size:12px}
   .toggles{margin:4px 0 14px}
   #soccer:checked ~ main .cell-r{display:flex}
   #soccer:checked ~ main .match-strip{display:none}
@@ -122,6 +123,11 @@ section.day:first-of-type{border-top:none}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="rgh0" x="-25%" y="-60%" width="150%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.022 0.035" numOctaves="2" seed="4" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5.5" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="rgh1" x="-25%" y="-60%" width="150%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="9" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="rgh2" x="-25%" y="-60%" width="150%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.024 0.038" numOctaves="2" seed="14" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs></svg>
 <input type="checkbox" id="soccer">
 <input type="checkbox" id="bigtext">
 <header class="hero">
@@ -160,15 +166,21 @@ function actInner(a){
   const note=a.n?(a.n.charAt(0)==='@'?(' <span class="note">'+a.n+'</span>'):(' <span class="note">— '+a.n+'</span>')):"";
   return '<div class="item"><div class="itime">'+a.t+'</div><div><span class="title">'+a.x+'</span>'+note+'</div></div>';
 }
+const SQ_PATHS=["M54 13 C108 4 172 7 202 20 C220 30 210 47 170 53 C112 63 46 60 21 46 C4 37 14 14 70 11","M50 12 C104 5 174 6 200 19 C220 29 208 48 168 54 C110 63 44 59 20 45 C3 36 16 13 66 12","M55 14 C106 4 170 7 201 20 C219 30 209 46 167 53 C111 62 47 60 22 47 C5 38 12 15 68 11"];
+let mseq=0;
+function sqWrap(inner,dm){
+  const i=mseq++%3, rot=(i-1)*0.7, da=(dm!==undefined?' data-m="'+dm+'"':'');
+  return '<span class="msq"'+da+' style="transform:rotate('+rot+'deg)"><svg viewBox="0 0 230 60" preserveAspectRatio="none" aria-hidden="true"><path d="'+SQ_PATHS[i]+'" fill="none" stroke="#34608f" stroke-width="4" stroke-linecap="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh'+i+')"/></svg><span class="msqt">'+inner+'</span></span>';
+}
 function bubble(m){
   const body=m.ro?('Round of 16 · '+m.ro):teams(m);
-  return '<span class="mpill"><span class="mt">'+m.t+'</span>'+body+'</span>';
+  return sqWrap('<span class="mt">'+m.t+'</span>'+body);
 }
 function bubbleCompact(m){
   const mini=s=>s[0]||s[1];
   const tt=m.t.replace(':00','');
   const body=m.ro?('R16 · '+m.ro):(mini(m.A)+' <span class="v">v</span> '+mini(m.B)+(m.g?' ?':''));
-  return '<span class="mpill" data-m="'+m.m+'"><span class="mt">'+tt+'</span>'+body+'</span>';
+  return sqWrap('<span class="mt">'+tt+'</span>'+body,m.m);
 }
 function featRow(m,gr){
   const note=(m.n||m.h)?('<div class="bnote">'+(m.n||"")+((m.n&&m.h)?" · ":"")+(m.h?('<a href="'+m.h+'" target="_blank" rel="noopener">register</a>'):"")+'</div>'):"";
