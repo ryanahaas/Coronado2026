@@ -44,7 +44,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ## Wednesday, July 1 | Shaw's Birthday 🥳
 
 ### Schedule
-- 9:00–11:00a | England game and Debbie & Steve sendoff
+- 9:00–11:00a | Bruce's French Toast, England game, Debbie & Steve sendoff | @ Marina
 - 12:00–1:30p | Bike ride to Bayside | Little Piggies for lunch
 - 3:00–5:00p | Pickleball 🏓
 - 5:00p | Wageners-only family dinner
