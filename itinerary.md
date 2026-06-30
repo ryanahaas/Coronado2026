@@ -105,7 +105,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 5:00–8:00p | Concert in the Park
 
 ### World Cup
-- 1:00p | Brazil v Norway
+- ! 1:00p | Brazil v Norway
 - ! 5:00p | Mexico v England? | @ location TBD
 
 ## Monday, July 6
