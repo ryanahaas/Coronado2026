@@ -95,7 +95,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 
 ### World Cup
 - 10:00a | Canada v Morocco
-- ! 2:00p | Paraguay v France? | @ Isabella
+- ! 2:00p | Paraguay v France | @ Isabella
 
 ## Sunday, July 5
 
@@ -105,7 +105,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 5:00–8:00p | Concert in the Park
 
 ### World Cup
-- 1:00p | Round of 16 · NY/NJ
+- 1:00p | Brazil v Norway
 - ! 5:00p | Mexico v England? | @ location TBD
 
 ## Monday, July 6
