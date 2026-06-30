@@ -46,10 +46,10 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ### Schedule
 - 9:00–11:00a | England game and Debbie & Steve sendoff
 - 12:00–1:30p | Bike ride to Bayside | Little Piggies for lunch
-- 3:00–5:00p | 🏓 Pickleball
+- 3:00–5:00p | Pickleball 🏓
 - 5:00p | Wageners-only family dinner
 - 8:30–10:00p | Board games | @ Marina
-- Late | Home rave or night out | feat. DJ cTrl+F1
+- Late | Rave | feat. DJ cTrl+F1
 
 ### World Cup
 - 9:00a | England v DR Congo
@@ -60,9 +60,9 @@ allweek: 🧩, 🌽🕳️, 🏖️
 
 ### Schedule
 - 8:30a | Paddleboard / kayaking on the bay | meet at Boathouse · rent ~$15
-- 11:00a–1:00p | 🏓 Pickleball
+- 11:00a–1:00p | Pickleball 🏓
 - 3:00–4:00p | Soccer in the park
-- TBD | Dinner @ TBD
+- TBD | Dinner/s @ TBD
 - 7:30p | Monikers / Fishbowl | @ Marina
 
 ### World Cup
@@ -73,10 +73,10 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ## Friday, July 3
 
 ### Schedule
-- 9:00–11:00a | 🏓 Pickleball
-- 2:30–4:30p | 🤽🏼‍♂️ Pool volleyball & jacuzzi | @ Isabella
-- 5:30p | Dinner at Isabella
-- 8:00p | Blood on the Clocktower | Storyteller: Jason Haas
+- 9:00–11:00a | Pickleball 🏓
+- 2:30–4:30p | Pool volleyball & jacuzzi 🤽🏼‍♂️ | @ Isabella
+- 5:30p | Dinner | @ Isabella
+- 8:00p | Blood on the Clocktower 🎭 | Storyteller: Jason Haas
 
 ### World Cup
 - 11:00a | Australia v Egypt
@@ -88,7 +88,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ### Schedule
 - 4:00a | Ed & Patrick set up tent
 - 10:00a–12:00p | Coronado 4th of July Parade
-- 1:00p | 🌭 Hot dogs & Nathan's Famous | @ Isabella
+- 1:00p | Hot dogs 🌭 & Nathan's Famous 📺 | @ Isabella
 - 6:00p | Dinner | @ Marina
 - 9:00p | Fireworks ⋆✴︎˚｡⋆
 
@@ -99,7 +99,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ## Sunday, July 5
 
 ### Schedule
-- 9:30–10:30a | Yoga on the beach
+- 9:30–10:30a | Yoga on the beach 🧘🏻‍♀️
 - 11:30a–1:00p | Bocce ball on the beach
 - 5:00–8:00p | Concert in the Park
 
