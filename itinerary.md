@@ -90,8 +90,8 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 4:00a | Ed & Patrick set up tent
 - 10:00a–12:00p | Coronado 4th of July Parade
 - 1:00p | Hot dogs 🌭 & Nathan's Famous 📺 | @ Isabella
-- 6:00p | Dinner | @ Marina
-- 9:00p | Fireworks ⋆✴︎˚｡⋆
+- 6:00p | Lawngames, Cocktails + Dinner | @ Marina
+- 9:15p | Fireworks ⋆✴︎˚｡⋆
 
 ### World Cup
 - 10:00a | Canada v Morocco
