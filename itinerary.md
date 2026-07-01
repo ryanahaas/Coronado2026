@@ -61,7 +61,7 @@ allweek: 🌽🕳️, 🏖️, 🚲
 ### Schedule
 - 8:30a | Paddleboard / kayaking on the bay | meet at Boathouse · rent ~$15
 - 11:00a–1:00p | Pickleball 🏓 | 2 courts
-- 3:00–4:00p | Soccer in the park
+- 3:00p–4:00p | Bocce ball on the beach
 - TBD | Dinner/s | @ TBD
 - 7:30p | Monikers a.k.a. Fishbowl | @ Marina
 
@@ -75,8 +75,9 @@ allweek: 🌽🕳️, 🏖️, 🚲
 ### Schedule
 - 9:00–11:00a | Pickleball 🏓 | 1 court
 - 9:30a | Ryan Gilly+Fam Visit @ Marina
+- 1:00–2:00p | Soccer in the park
 - 2:30–4:30p | Pool volleyball & jacuzzi 🤽🏼‍♂️ | @ Isabella
-- 5:30p | Lawn Games + Dinner | @ Isabella
+- 5:30p | Spikeball, Cornhole + Dinner | @ Isabella
 - 8:00p | Blood on the Clocktower 🎭 | Storyteller: Jason Haas
 
 ### World Cup
