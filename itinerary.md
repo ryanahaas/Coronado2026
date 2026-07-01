@@ -46,7 +46,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ### Schedule
 - 9:00–11:00a | Bruce's French Toast, England game, Debbie & Steve sendoff | @ Marina
 - 12:00–1:30p | Bike ride to Bayside | Little Piggies for lunch
-- 3:00–5:00p | Pickleball 🏓
+- 3:00–5:00p | Pickleball 🏓 | 2 courts
 - 5:00p | Wageners-only family dinner
 - 8:30–10:00p | Board games | @ Marina
 - Late | Rave | feat. DJ cTrl+F1
@@ -60,7 +60,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 
 ### Schedule
 - 8:30a | Paddleboard / kayaking on the bay | meet at Boathouse · rent ~$15
-- 11:00a–1:00p | Pickleball 🏓
+- 11:00a–1:00p | Pickleball 🏓 | 2 courts
 - 3:00–4:00p | Soccer in the park
 - TBD | Dinner/s @ TBD
 - 7:30p | Monikers / Fishbowl | @ Marina
@@ -73,7 +73,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ## Friday, July 3
 
 ### Schedule
-- 9:00–11:00a | Pickleball 🏓
+- 9:00–11:00a | Pickleball 🏓 | 1 court
 - 9:30a | Ryan Gilly+Fam Visit @ Marina
 - 2:30–4:30p | Pool volleyball & jacuzzi 🤽🏼‍♂️ | @ Isabella
 - 5:30p | Lawn Games + Dinner | @ Isabella
