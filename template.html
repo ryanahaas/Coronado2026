@@ -108,7 +108,6 @@ section.day:first-of-type{border-top:none}
 .aw-items{font-size:15px;color:var(--ink)}
 .daydeco{position:absolute;top:6px;right:6px;width:288px;max-width:46%;z-index:0;opacity:.9;pointer-events:none}
 .daydeco svg{width:100%;height:auto;display:block;overflow:visible}
-.flagwave{opacity:.72}
 #jul4{position:relative;isolation:isolate}
 #jul4 .dayhead,#jul4 .daygrid,#jul4 .match-strip{position:relative;z-index:1}
 @media (max-width:760px){
@@ -129,13 +128,12 @@ section.day:first-of-type{border-top:none}
   .itime{font-size:15px}
   .btext{font-size:16px}
   .daydeco{width:168px;opacity:.72;top:2px;right:2px}
-  .flagwave{display:none}
 }
 @keyframes ballfall{0%{transform:translateY(-12vh) rotate(0deg)}100%{transform:translateY(112vh) rotate(var(--spin,540deg))}}
 .ballrain{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
 .ballrain span{position:absolute;top:0;will-change:transform}
-@keyframes fwtwinkle{0%,100%{opacity:.38}50%{opacity:.78}}
-.fw{animation:fwtwinkle 3.6s ease-in-out infinite}
+@keyframes fwtwinkle{0%,100%{opacity:.32}50%{opacity:1}}
+.spk{animation:fwtwinkle 1.9s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -203,39 +201,22 @@ function featRow(m,gr){
   const sq='<svg class="bsq" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M5 6 L595 5 L597 54 L3 55 Z" fill="none" stroke="#34608f" stroke-width="4" stroke-linejoin="round" opacity="0.82" vector-effect="non-scaling-stroke" filter="url(#rgh1)"/></svg>';
   return '<div class="featrow" data-m="'+m.m+'" style="grid-row:'+gr+';grid-column:1">'+sq+'<div class="ftime">'+m.t+'</div><div class="barbox"><div class="btext">'+teams(m)+' <span class="loc">@ '+m.loc+'</span></div>'+note+'</div></div>';
 }
-function fwBurst(cx,cy,r,n,color,rot,delay){
+function fwBurst(cx,cy,r,n,color,rot){
   let sp='';
   for(let i=0;i<n;i++){
-    const a=(i/n)*6.2832+rot, L=r*(i%2?0.82:1);
-    const ix=(cx+Math.cos(a)*r*0.18).toFixed(1), iy=(cy+Math.sin(a)*r*0.18).toFixed(1);
-    const ex=(cx+Math.cos(a)*L).toFixed(1), ey=(cy+Math.sin(a)*L).toFixed(1);
-    sp+='<line x1="'+ix+'" y1="'+iy+'" x2="'+ex+'" y2="'+ey+'"/><circle cx="'+ex+'" cy="'+ey+'" r="'+(i%2?1.5:2.1)+'" stroke="none"/>';
+    const a=(i/n)*6.2832+rot, L=r*(i%2?0.74:1);
+    const x1=(cx+Math.cos(a)*r*0.26).toFixed(1), y1=(cy+Math.sin(a)*r*0.26).toFixed(1);
+    const x2=(cx+Math.cos(a)*L).toFixed(1), y2=(cy+Math.sin(a)*L).toFixed(1);
+    const d=(-((i*0.618)%1)*1.9).toFixed(2);
+    sp+='<g class="spk" style="animation-delay:'+d+'s"><line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'"/><circle cx="'+x2+'" cy="'+y2+'" r="'+(i%2?1.3:1.9)+'" stroke="none"/></g>';
   }
-  return '<g class="fw" style="animation-delay:'+delay+'s">'
-    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*0.9).toFixed(0)+'" fill="'+color+'" opacity="0.1" stroke="none"/>'
-    +'<g stroke="'+color+'" fill="'+color+'" stroke-width="2.2" stroke-linecap="round"><circle cx="'+cx+'" cy="'+cy+'" r="2.4" stroke="none"/>'+sp+'</g></g>';
+  return '<g class="fw" stroke="'+color+'" fill="'+color+'" stroke-width="2" stroke-linecap="round"><circle cx="'+cx+'" cy="'+cy+'" r="2.1" stroke="none"/>'+sp+'</g>';
 }
 function jul4Deco(){
-  const flag='<g class="flagwave">'
-    +'<line x1="34" y1="62" x2="34" y2="15" stroke="#8A7A60" stroke-width="2.2" stroke-linecap="round"/>'
-    +'<circle cx="34" cy="14" r="2.2" fill="#E9A53E"/>'
-    +'<clipPath id="fcl"><path d="M35,17 C52,12 70,22 96,16 L96,39 C70,46 52,35 35,41 Z"/></clipPath>'
-    +'<g clip-path="url(#fcl)">'
-      +'<rect x="34" y="13" width="64" height="32" fill="#FBF6EC"/>'
-      +'<rect x="34" y="18" width="64" height="3.6" fill="#C2554E"/>'
-      +'<rect x="34" y="25" width="64" height="3.6" fill="#C2554E"/>'
-      +'<rect x="34" y="32" width="64" height="3.6" fill="#C2554E"/>'
-      +'<rect x="34" y="39" width="64" height="3.6" fill="#C2554E"/>'
-      +'<rect x="34" y="15" width="27" height="12" fill="#2E5E8C"/>'
-      +'<g fill="#FBF6EC"><circle cx="40" cy="18.5" r=".9"/><circle cx="47" cy="18.5" r=".9"/><circle cx="54" cy="18.5" r=".9"/><circle cx="43.5" cy="23" r=".9"/><circle cx="50.5" cy="23" r=".9"/></g>'
-    +'</g>'
-    +'<path d="M35,17 C52,12 70,22 96,16 L96,39 C70,46 52,35 35,41 Z" fill="none" stroke="#C9B89A" stroke-width="1.1"/>'
-  +'</g>';
-  return '<div class="daydeco" aria-hidden="true"><svg viewBox="0 0 300 150" fill="none">'
-    +fwBurst(208,54,37,14,'#E0A23A',0.05,0)
-    +fwBurst(150,84,25,12,'#C2554E',0.3,1.1)
-    +fwBurst(260,98,18,10,'#3F6FA0',0,2.0)
-    +flag
+  return '<div class="daydeco" aria-hidden="true"><svg viewBox="0 0 300 170" fill="none">'
+    +fwBurst(210,50,35,12,'#E0A23A',0.05)
+    +fwBurst(146,78,25,10,'#C2554E',0.3)
+    +fwBurst(258,104,18,8,'#3F6FA0',0)
   +'</svg></div>';
 }
 const _now=new Date();
