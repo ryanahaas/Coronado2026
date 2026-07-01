@@ -62,8 +62,8 @@ allweek: 🧩, 🌽🕳️, 🏖️
 - 8:30a | Paddleboard / kayaking on the bay | meet at Boathouse · rent ~$15
 - 11:00a–1:00p | Pickleball 🏓 | 2 courts
 - 3:00–4:00p | Soccer in the park
-- TBD | Dinner/s @ TBD
-- 7:30p | Monikers / Fishbowl | @ Marina
+- TBD | Dinner/s | @ TBD
+- 7:30p | Monikers a.k.a. Fishbowl | @ Marina
 
 ### World Cup
 - 12:00p | Spain v Austria
