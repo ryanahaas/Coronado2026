@@ -66,7 +66,9 @@ section.day:first-of-type{border-top:none}
 .match-strip{display:none}
 #soccer{display:none}
 #bigtext{display:none}
-.toggles{display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;margin:8px 0 16px}
+#miltime{display:none}
+#pirate{display:none}
+.toggles{display:flex;justify-content:center;align-items:center;gap:16px 22px;flex-wrap:wrap;margin:8px 0 16px}
 .soccer-toggle,.big-toggle{display:flex;align-items:center;gap:4px;width:fit-content;margin:0;cursor:pointer}
 .il{display:inline-flex;align-items:center;gap:7px;font-size:19px;color:#2B2A28;font-family:Georgia,"Times New Roman",serif}
 .strack{position:relative;width:58px;height:30px;border-radius:999px;background:#E2DBC9;transition:background .2s;flex:0 0 auto}
@@ -75,6 +77,13 @@ section.day:first-of-type{border-top:none}
 #soccer:checked ~ main .soccer-toggle .sknob{transform:translateX(28px)}
 #bigtext:checked ~ main .big-toggle .strack{background:#8FBEE6}
 #bigtext:checked ~ main .big-toggle .sknob{transform:translateX(28px)}
+#miltime:checked ~ main .miltime-toggle .strack{background:#E1B24C}
+#miltime:checked ~ main .miltime-toggle .sknob{transform:translateX(28px)}
+#pirate:checked ~ main .pirate-toggle .strack{background:#B78A5B}
+#pirate:checked ~ main .pirate-toggle .sknob{transform:translateX(28px)}
+.miltime-toggle,.pirate-toggle{display:flex;align-items:center;gap:4px;width:fit-content;margin:0;cursor:pointer}
+.szic{display:inline-flex;align-items:baseline;font-family:Georgia,serif;color:#2b2a28;line-height:1;font-size:9px}
+.szic span{font-size:15px}
 .wc-link{display:none;position:relative;align-items:center;gap:7px;width:fit-content;margin:0 auto 16px;text-decoration:none;color:var(--pill-ink);font-size:15px;font-weight:600;padding:1px 6px 15px;white-space:nowrap}
 .wc-ic{width:17px;height:17px;flex:0 0 auto}
 .wc-ar{width:12px;height:12px;flex:0 0 auto}
@@ -150,8 +159,10 @@ section.day:first-of-type{border-top:none}
 <filter id="rgh2" x="-25%" y="-60%" width="150%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.024 0.038" numOctaves="2" seed="14" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="rghu" x="-12%" y="-60%" width="124%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.13 0.5" numOctaves="1" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8"/></filter>
 </defs></svg>
-<input type="checkbox" id="soccer">
-<input type="checkbox" id="bigtext">
+<input type="checkbox" id="soccer" aria-label="I love soccer">
+<input type="checkbox" id="bigtext" aria-label="Bigger text">
+<input type="checkbox" id="miltime" aria-label="Military time">
+<input type="checkbox" id="pirate" aria-label="Pirate mode">
 <header class="hero">
   <svg class="sun" width="74" height="74" viewBox="0 0 74 74" aria-hidden="true">
     <circle cx="37" cy="37" r="15" fill="#F1B44C"/>
@@ -173,7 +184,7 @@ section.day:first-of-type{border-top:none}
 </header>
 
 <nav class="nav"><div class="nav-inner" id="nav"></div></nav>
-<main class="wrap" id="days"><div class="toggles"><label for="soccer" class="soccer-toggle"><span class="il">I<svg class="heart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2554E" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><span class="strack"><span class="sknob">⚽</span></span></label><label for="bigtext" class="big-toggle"><span class="il">I'm 🧓</span><span class="strack"><span class="sknob">🔍</span></span></label></div><a class="wc-link" href="https://harry-wagener.github.io/WC_tracker/" target="_blank" rel="noopener"><svg class="wc-ic" viewBox="0 0 24 24" fill="none" stroke="#E0A23A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1 -10 0z"/><path d="M7 5C4.2 5.2 4.2 8.8 7 9"/><path d="M17 5C19.8 5.2 19.8 8.8 17 9"/><path d="M12 14v3"/><path d="M9.5 17h5"/><path d="M12 17v4"/><path d="M8 21h8"/></svg><span>World Cup Pool Standings</span><svg class="wc-ar" viewBox="0 0 24 24" fill="none" stroke="#2E5680" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L16 8"/><path d="M9.5 8H16V14.5"/></svg><svg class="wc-ul" viewBox="0 0 300 15" preserveAspectRatio="none" aria-hidden="true"><path d="M4,4 C70,1.5 150,6 232,3 C266,2 287,4 297,3" fill="none" stroke="#2E5680" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#rghu)"/><path d="M7,10.5 C70,8 150,13 236,9.5 C268,8 288,10.5 294,9.5" fill="none" stroke="#2E5680" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#rghu)"/></svg></a></main>
+<main class="wrap" id="days"><div class="toggles"><label for="soccer" class="soccer-toggle"><span class="strack"><span class="sknob">⚽</span></span></label><label for="bigtext" class="big-toggle"><span class="strack"><span class="sknob"><span class="szic">A<span>A</span></span></span></span></label><label for="miltime" class="miltime-toggle"><span class="strack"><span class="sknob"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b2a28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4l3 2"/></svg></span></span></label><label for="pirate" class="pirate-toggle"><span class="strack"><span class="sknob">☠️</span></span></label></div><a class="wc-link" href="https://harry-wagener.github.io/WC_tracker/" target="_blank" rel="noopener"><svg class="wc-ic" viewBox="0 0 24 24" fill="none" stroke="#E0A23A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1 -10 0z"/><path d="M7 5C4.2 5.2 4.2 8.8 7 9"/><path d="M17 5C19.8 5.2 19.8 8.8 17 9"/><path d="M12 14v3"/><path d="M9.5 17h5"/><path d="M12 17v4"/><path d="M8 21h8"/></svg><span>World Cup Pool Standings</span><svg class="wc-ar" viewBox="0 0 24 24" fill="none" stroke="#2E5680" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L16 8"/><path d="M9.5 8H16V14.5"/></svg><svg class="wc-ul" viewBox="0 0 300 15" preserveAspectRatio="none" aria-hidden="true"><path d="M4,4 C70,1.5 150,6 232,3 C266,2 287,4 297,3" fill="none" stroke="#2E5680" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#rghu)"/><path d="M7,10.5 C70,8 150,13 236,9.5 C268,8 288,10.5 294,9.5" fill="none" stroke="#2E5680" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#rghu)"/></svg></a></main>
 <div class="allweek"><span class="aw-label">Anytime all week</span><span class="aw-items">__ALLWEEK__</span></div>
 
 <script>
@@ -314,6 +325,18 @@ function gotoToday(){
   spy();
 }
 if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(gotoToday); } else { window.addEventListener('load',gotoToday); }
+
+(function(){
+  function conv(t,mer){ var m=t.match(/(\d{1,2})(?::(\d{2}))?/); if(!m) return t; var h=parseInt(m[1],10), mn=m[2]||'00'; mer=(mer||'').toLowerCase(); if(mer==='p'&&h!==12) h+=12; if(mer==='a'&&h===12) h=0; return (h<10?'0'+h:''+h)+':'+mn; }
+  function to24(s){ s=(s||'').trim(); if(!s || /late|tbd|tba|noon/i.test(s)) return s; var parts=s.split(/\s*[–—-]\s*/); if(parts.length===2){ var a=(parts[0].match(/[ap]/i)||[])[0], b=(parts[1].match(/[ap]/i)||[])[0]; if(!a&&b) a=b; if(!b&&a) b=a; return conv(parts[0],a)+'–'+conv(parts[1],b); } return conv(s,(s.match(/[ap]/i)||[])[0]); }
+  var mil=document.getElementById('miltime');
+  if(mil){ document.querySelectorAll('.itime,.ftime,.mt').forEach(function(el){ el.setAttribute('data-civ',el.textContent); el.setAttribute('data-mil',to24(el.textContent)); }); mil.addEventListener('change',function(){ var on=this.checked; document.querySelectorAll('.itime,.ftime,.mt').forEach(function(el){ el.textContent = on ? el.getAttribute('data-mil') : el.getAttribute('data-civ'); }); }); }
+  var PD=[["you're","ye be"],["your","yer"],["you","ye"],["hello","ahoy"],["hi","ahoy"],["hey","arr"],["yes","aye"],["no","nay"],["my","me"],["friend","matey"],["friends","mateys"],["the","th'"],["is","be"],["are","be"],["am","be"],["for","fer"],["to","t'"],["of","o'"],["and","an'"],["with","wit'"],["there","thar"],["over","o'er"],["money","doubloons"],["dinner","feast"],["food","grub"],["drinks","grog"],["drink","grog"],["cocktails","grog"],["beer","grog"],["wine","grog"],["beach","shore"],["family","crew"],["everyone","all hands"],["people","scallywags"],["party","revelry"],["boat","ship"],["stop","avast"],["great","grand"],["plans","plunder"],["plan","plunder"]];
+  function cap(w,m){ return /^[A-Z]/.test(m) ? w.charAt(0).toUpperCase()+w.slice(1) : w; }
+  function piratize(t){ PD.forEach(function(p){ t=t.replace(new RegExp('\\b'+p[0]+'\\b','gi'),function(m){ return cap(p[1],m); }); }); t=t.replace(/(\w{2,})ing\b/gi,"$1in'"); return t; }
+  var pir=document.getElementById('pirate');
+  if(pir){ var SEL='.title,.note,.aw-items,.empty,.dayhead .hl'; pir.addEventListener('change',function(){ var on=this.checked; document.querySelectorAll(SEL).forEach(function(el){ if(on){ if(el.getAttribute('data-eng')===null) el.setAttribute('data-eng',el.textContent); el.textContent=piratize(el.getAttribute('data-eng')); } else { var e=el.getAttribute('data-eng'); if(e!==null) el.textContent=e; } }); }); }
+})();
 
 (function(){
   var d=new Date();
