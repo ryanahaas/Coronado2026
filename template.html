@@ -150,6 +150,9 @@ section.day:first-of-type{border-top:none}
 .bday-banner{position:absolute;top:0;left:0;width:100%;will-change:transform}
 .bday-cf{position:absolute;width:10px;height:14px;border-radius:2px;will-change:transform}
 .bday-balloon{position:absolute;will-change:transform}
+.pship{position:fixed;left:0;z-index:9990;pointer-events:none;will-change:transform}
+.pship-in{display:block;will-change:transform;animation:shipbob 1.9s ease-in-out infinite}
+@keyframes shipbob{0%,100%{transform:translateY(0) rotate(-1.3deg)}50%{transform:translateY(-6px) rotate(1.3deg)}}
 </style>
 </head>
 <body>
@@ -331,11 +334,40 @@ if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(gotoToday); 
   function to24(s){ s=(s||'').trim(); if(!s || /late|tbd|tba|noon/i.test(s)) return s; var parts=s.split(/\s*[–—-]\s*/); if(parts.length===2){ var a=(parts[0].match(/[ap]/i)||[])[0], b=(parts[1].match(/[ap]/i)||[])[0]; if(!a&&b) a=b; if(!b&&a) b=a; return conv(parts[0],a)+'–'+conv(parts[1],b); } return conv(s,(s.match(/[ap]/i)||[])[0]); }
   var mil=document.getElementById('miltime');
   if(mil){ document.querySelectorAll('.itime,.ftime,.mt').forEach(function(el){ el.setAttribute('data-civ',el.textContent); el.setAttribute('data-mil',to24(el.textContent)); }); mil.addEventListener('change',function(){ var on=this.checked; document.querySelectorAll('.itime,.ftime,.mt').forEach(function(el){ el.textContent = on ? el.getAttribute('data-mil') : el.getAttribute('data-civ'); }); }); }
-  var PD=[["you're","ye be"],["your","yer"],["you","ye"],["hello","ahoy"],["hi","ahoy"],["hey","arr"],["yes","aye"],["no","nay"],["my","me"],["friend","matey"],["friends","mateys"],["the","th'"],["is","be"],["are","be"],["am","be"],["for","fer"],["to","t'"],["of","o'"],["and","an'"],["with","wit'"],["there","thar"],["over","o'er"],["money","doubloons"],["dinner","feast"],["food","grub"],["drinks","grog"],["drink","grog"],["cocktails","grog"],["beer","grog"],["wine","grog"],["beach","shore"],["family","crew"],["everyone","all hands"],["people","scallywags"],["party","revelry"],["boat","ship"],["stop","avast"],["great","grand"],["plans","plunder"],["plan","plunder"]];
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PD=[["you're","ye be"],["yours","yers"],["your","yer"],["you","ye"],["yourself","yerself"],
+    ["hello","ahoy"],["hi","ahoy"],["hey","arr"],["yes","aye"],["okay","aye"],["no","nay"],["not","nay"],
+    ["my","me"],["mine","me own"],["we're","we be"],["they're","they be"],["it's","'tis"],
+    ["the","th'"],["is","be"],["are","be"],["am","be"],["was","were"],
+    ["for","fer"],["to","t'"],["of","o'"],["and","an'"],["with","wit'"],["or","'r"],
+    ["there","thar"],["here","'ere"],["where","whar"],["over","o'er"],["ever","e'er"],["never","ne'er"],["about","'bout"],["because","'cause"],["around","'round"],
+    ["very","mighty"],["really","truly"],["please","pray"],["thanks","much obliged"],
+    ["everyone","all hands"],["everybody","all hands"],["people","scallywags"],["person","scallywag"],["someone","some scallywag"],
+    ["friend","matey"],["friends","mateys"],["buddy","bucko"],["guys","hearties"],
+    ["kids","wee ones"],["kid","wee one"],["children","wee ones"],["child","wee one"],
+    ["woman","lass"],["women","lasses"],["girl","lass"],["girls","lasses"],["boy","lad"],["boys","lads"],["man","ol' salt"],["men","ol' salts"],
+    ["happy","jolly"],["great","grand"],["good","fine"],["best","finest"],["awesome","grand"],["amazing","grand"],["fun","merriment"],["nice","fine"],["cool","grand"],["beautiful","bonny"],
+    ["big","mighty"],["large","mighty"],["little","wee"],["small","wee"],["fast","swift"],["quick","swift"],["hot","blazin'"],
+    ["money","doubloons"],["treasure","booty"],["gold","doubloons"],["prize","booty"],
+    ["food","grub"],["dinner","feast"],["lunch","mess"],["breakfast","mornin' grub"],["meal","feast"],["snacks","rations"],
+    ["drinks","grog"],["drink","grog"],["beer","grog"],["beers","grog"],["wine","grog"],["cocktails","grog"],["cocktail","grog"],["coffee","black grog"],["water","grog"],
+    ["beach","shore"],["sea","briny deep"],["ocean","briny deep"],["pool","lagoon"],["sand","shore"],
+    ["boat","ship"],["family","crew"],["families","crews"],["team","crew"],["group","crew"],["party","revelry"],["celebration","revelry"],["gathering","gatherin' o' scallywags"],
+    ["games","contests"],["game","contest"],["match","clash"],["concert","shanty-sing"],["parade","grand march"],["park","cove"],["show","spectacle"],["fireworks","cannon-fire"],
+    ["morning","mornin'"],["evening","eventide"],["night","nightfall"],["today","this here day"],["tomorrow","th' morrow"],["week","voyage"],
+    ["set up","rig up"],["walk","swagger"],["run","scurry"],["stop","avast"],["wait","hold fast"],["leave","set sail"],["look","spy"],["see","spy"],["watch","keep watch"],["eat","feast"],["build","rig"],
+    ["house","quarters"],["home","port"],["room","cabin"],["kitchen","galley"],["bathroom","head"],["bed","bunk"],
+    ["dogs","sea dogs"],["dog","sea dog"],["puzzle","riddle"],["storyteller","tale-spinner"],["story","tale"],["blood","grog"],["clocktower","crow's nest"],["yoga","deck stretches"],["ball","cannonball"],["tent","canvas shelter"],["cornhole","cannonball toss"],
+    ["plans","plunder"],["plan","plunder"],["schedule","ship's log"],["welcome","ahoy an' welcome"]];
+  var INTJ=["Arr! ","Avast! ","Ahoy! ","Yo-ho! ","Har! ","Aye, ","Yarr! "];
   function cap(w,m){ return /^[A-Z]/.test(m) ? w.charAt(0).toUpperCase()+w.slice(1) : w; }
   function piratize(t){ PD.forEach(function(p){ t=t.replace(new RegExp('\\b'+p[0]+'\\b','gi'),function(m){ return cap(p[1],m); }); }); t=t.replace(/(\w{2,})ing\b/gi,"$1in'"); return t; }
+  function phash(s){ var h=0,i; for(i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; } return Math.abs(h); }
+  function pirTitle(eng){ return INTJ[phash(eng)%INTJ.length]+piratize(eng); }
+  var SHIP='<svg class="pship-in" width="200" height="150" viewBox="0 0 220 165" fill="none" aria-hidden="true"><path d="M0,150 Q30,143 60,150 T120,150 T180,150 T240,150" stroke="#6E97B8" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/><path d="M0,158 Q30,151 60,158 T120,158 T180,158 T240,158" stroke="#8FB0CB" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"/><path d="M70,28 L26,112 M120,34 L190,112 M70,28 L120,34" stroke="#5A3D28" stroke-width="1" opacity="0.55" fill="none"/><path d="M70,112 L70,26 M120,112 L120,32" stroke="#5A3D28" stroke-width="3" stroke-linecap="round"/><path d="M70,34 C104,44 106,82 70,88 Z" fill="#F2E8CE" stroke="#CDBB93" stroke-width="1.5" stroke-linejoin="round"/><path d="M120,40 C156,50 157,84 120,90 Z" fill="#EFE4C6" stroke="#CDBB93" stroke-width="1.5" stroke-linejoin="round"/><path d="M120,30 L141,33.5 L120,37 Z" fill="#2b2a28"/><circle cx="127" cy="33.5" r="1.6" fill="#F2E8CE"/><path d="M70,24 L86,27 L70,30 Z" fill="#C2554E"/><path d="M182,108 L209,99" stroke="#5A3D28" stroke-width="2.4" stroke-linecap="round"/><path d="M186,108 L206,100 L190,117 Z" fill="#EFE4C6" stroke="#CDBB93" stroke-width="1.2" stroke-linejoin="round"/><path d="M22,110 L190,110 Q165,150 108,152 Q50,150 22,110 Z" fill="#6E4A2E" stroke="#49301E" stroke-width="2" stroke-linejoin="round"/><path d="M25,110 L187,110 L182,120 L30,120 Z" fill="#8A6440"/><circle cx="70" cy="132" r="3" fill="#2E1E12"/><circle cx="102" cy="134" r="3" fill="#2E1E12"/><circle cx="134" cy="132" r="3" fill="#2E1E12"/></svg>';
+  function playShip(){ if(reduce) return; var ex=document.querySelector('.pship'); if(ex) ex.remove(); var W=window.innerWidth,H=window.innerHeight; var s=document.createElement('div'); s.className='pship'; s.style.top=Math.round(H*0.52)+'px'; s.innerHTML=SHIP; document.body.appendChild(s); s.animate([{transform:'translateX(-240px)'},{transform:'translateX('+(W+80)+'px)'}],{duration:6200,easing:'linear'}).onfinish=function(){s.remove();}; }
   var pir=document.getElementById('pirate');
-  if(pir){ var SEL='.title,.note,.aw-items,.empty,.dayhead .hl'; pir.addEventListener('change',function(){ var on=this.checked; document.querySelectorAll(SEL).forEach(function(el){ if(on){ if(el.getAttribute('data-eng')===null) el.setAttribute('data-eng',el.textContent); el.textContent=piratize(el.getAttribute('data-eng')); } else { var e=el.getAttribute('data-eng'); if(e!==null) el.textContent=e; } }); }); }
+  if(pir){ var SEL='.title,.note,.aw-items,.empty,.dayhead .hl'; pir.addEventListener('change',function(){ var on=this.checked; if(on) playShip(); document.querySelectorAll(SEL).forEach(function(el){ if(on){ if(el.getAttribute('data-eng')===null) el.setAttribute('data-eng',el.textContent); var eng=el.getAttribute('data-eng'); el.textContent = el.classList.contains('title') ? pirTitle(eng) : piratize(eng); } else { var e=el.getAttribute('data-eng'); if(e!==null) el.textContent=e; } }); }); }
 })();
 
 (function(){
