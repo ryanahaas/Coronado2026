@@ -1,5 +1,5 @@
 # Coronado
-subtitle: Fourth of July Week · 2026
+subtitle: Fourth of July · 2026
 kicker: Annual family + friends gathering
 dates: Monday, June 29 – Tuesday, July 7
 timezone: All times Pacific
@@ -87,7 +87,7 @@ allweek: 🧩, 🌽🕳️, 🏖️
 ## Saturday, July 4
 
 ### Schedule
-- 4:00a | Ed & Patrick set up tent
+- 4:00a | Ed sets up tent
 - 10:00a–12:00p | Coronado 4th of July Parade
 - 1:00p | Hot dogs 🌭 & Nathan's Famous 📺 | @ Isabella
 - 6:00p | Lawngames, Cocktails + Dinner | @ Marina
